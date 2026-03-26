@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NeonFrame } from "@/components/NeonFrame";
 import { RogueLogo } from "@/components/RogueLogo";
-import { Zap, Settings, Download, Mail } from "lucide-react";
+import { Zap, Settings, Download, Mail, Grid } from "lucide-react";
+import Link from "next/link";
 
 type Language = "EN" | "PL";
 
@@ -22,6 +23,7 @@ const translations = {
     speedDesc: "Optimized kernel and drivers for minimum latency.",
     customization: "Full Control",
     customizationDesc: "Pre-configured but completely open to your tweaks.",
+    viewIcons: "VIEW SYSTEM ICONS",
     contact: "Technical Support:",
   },
   PL: {
@@ -37,6 +39,7 @@ const translations = {
     speedDesc: "Zoptymalizowane jądro i sterowniki dla minimalnych opóźnień.",
     customization: "Pełna Kontrola",
     customizationDesc: "Wstępnie skonfigurowany, ale w pełni otwarty na Twoje modyfikacje.",
+    viewIcons: "ZOBACZ IKONY SYSTEMOWE",
     contact: "Wsparcie Techniczne:",
   },
 };
@@ -144,8 +147,8 @@ export default function Home() {
                   </div>
                 </section>
 
-                {/* ISO Download Section */}
-                <section className="flex flex-col items-center">
+                {/* Action Buttons Section */}
+                <section className="flex flex-col items-center gap-8">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -158,6 +161,16 @@ export default function Home() {
                       {t.download}
                     </span>
                   </motion.button>
+
+                  <Link href="/icons">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center gap-2 text-sm font-gaming text-[#9D00FF] border-b border-transparent hover:border-[#9D00FF] transition-all cursor-pointer py-1"
+                    >
+                      <Grid className="w-4 h-4" />
+                      {t.viewIcons}
+                    </motion.div>
+                  </Link>
                 </section>
 
                 {/* Features Section */}
